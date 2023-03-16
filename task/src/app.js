@@ -4,6 +4,11 @@
  * dari file controllers/UserController.js
  */
 // CODE HERE
+import {
+  formatUser,
+  findByName,
+  filterByMajor
+} from "./controllers/UserController.js";
 
 /**
  * Fungsi Main.
