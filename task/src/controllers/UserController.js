@@ -38,9 +38,9 @@ const formatUser = (title) => {
  * - Gunakan method find untuk mencari 1 user.
  * - Gunakan promise untuk handle asynchronous.
  */
-const findByName = (findAufa) => {
+const findByName = (SearchAufa) => {
     return new Promise((resolve, reject) => { setTimeout(() => {
-            resolve(users.find((user) => user.name == findAufa));
+            resolve(users.find((user) => user.name == SearchAufa));
         }, 2000);
     });
 };
