@@ -16,6 +16,7 @@ function AddMovieForm(props) {
   // Membuat state title dan date
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
+  const [picture, setPicture] = useState("");
 
   // Membuat state: isTitleError, isDateError
   const [isTitleError, setIsTitleError] = useState(false);
@@ -43,6 +44,10 @@ function AddMovieForm(props) {
      * Set date nilai baru: input saat ini.
      */
     setDate(e.target.value);
+  }
+
+  function handlePicture(e) {
+    setPicture(e.target.value);
   }
 
   function handleSubmit(e) {
@@ -130,6 +135,25 @@ function AddMovieForm(props) {
                * Jika isDateError true maka render error
                */}
               {isDateError && <Alert>Date Wajib Diisi</Alert>}
+            </div>
+            <div className={styles.form__group}>
+              <label htmlFor="picture" className={styles.form__label}>
+                Picture
+              </label>
+              <input 
+                id="picture" 
+                className={styles.form__input} 
+                type="text" 
+                name="picture" 
+                onClick={handlePicture} />
+            </div>
+            <div>
+              <select name="type" id="">
+                <option value="">Action</option>
+                <option value="">Drama</option>
+                <option value="">Horror</option>
+                <option value="">Comedy</option>
+              </select>
             </div>
             <div>
               <button className={styles.form__button}>Add Movie</button>
