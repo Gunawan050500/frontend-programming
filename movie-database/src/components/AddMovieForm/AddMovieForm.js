@@ -23,6 +23,9 @@ function AddMovieForm(props) {
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
   const [isPictureError, setIsPictureError] = useState(false);
+  const [isTypeError, setIsTypeError] = useState(false);
+
+  const genre = ["Action","Drama","Horror","Comedy"]
 
   /**
    * Membuat fungsi handleTitle
@@ -74,6 +77,9 @@ function AddMovieForm(props) {
     else if (picture === "") {
       setIsPictureError(true);
     }
+    else if (type === "") {
+      setIsPictureError(true);
+    }
     // Jika tidak, maka push movie dan set error false
     else {
       const movie = {
@@ -90,6 +96,7 @@ function AddMovieForm(props) {
       setIsTitleError(false);
       setIsDateError(false);
       setIsPictureError(false);
+      setIsTypeError(false);
     }
   }
 
@@ -158,12 +165,16 @@ function AddMovieForm(props) {
                 onClick={handlePicture} />
                 {isPictureError && <Alert> Masukan Link Gambar </Alert>}
             </div>
-            <div>
-              <select name="type" id="">
-                <option value="action">Action</option>
+            <div className={styles.form__group}>
+              <select defaultValue={"Choose Genre Movie"} name="type" id="type" onChange={handleType}>
+                <option disabled>Choose Genre Movie</option>
+                {genre.map((el, index)=>{
+                  return <option key={index} value={el}>{el}</option>
+                })}
+                {/* <option value="action">Action</option>
                 <option value="drama">Drama</option>
                 <option value="horror">Horror</option>
-                <option value="comedy">Comedy</option>
+                <option value="comedy">Comedy</option> */}
               </select>
             </div>
             <div>
