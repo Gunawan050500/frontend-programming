@@ -16,7 +16,7 @@ function Hero() {
           </p>
           <button className={styles.hero__button}>Watch</button>
         </div>
-        <div className="hero__right">
+        <div className={styles.hero__right}>
           <img
             className={styles.hero__image}
             src="https://picsum.photos/536/354"
