@@ -17,10 +17,12 @@ function AddMovieForm(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [picture, setPicture] = useState("");
+  const [type, setType] = useState("");
 
   // Membuat state: isTitleError, isDateError
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
+  const [isPictureError, setIsPictureError] = useState(false);
 
   /**
    * Membuat fungsi handleTitle
@@ -50,6 +52,10 @@ function AddMovieForm(props) {
     setPicture(e.target.value);
   }
 
+  function handleType(e) {
+    setType(e.target.value);
+  }
+
   function handleSubmit(e) {
     /**
      * Mencegah perilaku default form.
@@ -65,14 +71,17 @@ function AddMovieForm(props) {
     else if (date === "") {
       setIsDateError(true);
     }
+    else if (picture === "") {
+      setIsPictureError(true);
+    }
     // Jika tidak, maka push movie dan set error false
     else {
       const movie = {
         id: nanoid(),
         title: title,
         year: date,
-        type: "Movie",
-        poster: "https://picsum.photos/300/400",
+        type: type,
+        poster: picture,
       };
 
       // SOLVED: HOW TO ADD MOVIE TO MOVIES :)
@@ -80,6 +89,7 @@ function AddMovieForm(props) {
 
       setIsTitleError(false);
       setIsDateError(false);
+      setIsPictureError(false);
     }
   }
 
@@ -146,13 +156,14 @@ function AddMovieForm(props) {
                 type="text" 
                 name="picture" 
                 onClick={handlePicture} />
+                {isPictureError && <Alert> Masukan Link Gambar </Alert>}
             </div>
             <div>
               <select name="type" id="">
-                <option value="">Action</option>
-                <option value="">Drama</option>
-                <option value="">Horror</option>
-                <option value="">Comedy</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="horror">Horror</option>
+                <option value="comedy">Comedy</option>
               </select>
             </div>
             <div>
